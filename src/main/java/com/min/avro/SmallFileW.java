@@ -14,6 +14,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IOUtils;
 
 //小文件写入
 public class SmallFileW {
@@ -50,7 +51,10 @@ public class SmallFileW {
 			record.put(FIELD_CONTENTS, ByteBuffer.wrap(bs));
 			writer.append(record);
 		}
-		writer.close();
+		//writer.close();
+		//oStream.close();
+		IOUtils.cleanup(null, writer);
+		IOUtils.cleanup(null, oStream);
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -63,5 +67,6 @@ public class SmallFileW {
 		OutputStream stream = system.create(path);
 		// file是从本地的的文件
 		writeToAvro(new File("E:\\2"), stream);
+		system.close();
 	}
 }
