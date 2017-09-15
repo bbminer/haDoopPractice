@@ -133,7 +133,7 @@ public class HdfsTest {
 	public static void main(String[] args) {
 		HdfsTest hTest = new HdfsTest();
 		String path = "/hellow";
-		// hTest.creatFile(path);
+		 hTest.creatFile(path);
 		// hTest.atppend(path);
 		// hTest.read(path);
 		// hTest.listHdfsDir("/");

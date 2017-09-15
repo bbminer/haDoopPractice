@@ -34,10 +34,7 @@ public class Test3 {
 		@Override
 		protected void reduce(Text arg0, Iterable<Text> arg1, Reducer<Text, Text, Text, Text>.Context arg2)
 				throws IOException, InterruptedException {
-			// TODO Auto-generated method stub
-			int sum = 0;
-			for (Text text : arg1) {
-				sum += Integer.valueOf(text.toString());
+			for (@SuppressWarnings("unused") Text text : arg1) {
 			}
 			vText.set("");
 			arg2.write(arg0, vText);
